@@ -5,17 +5,17 @@
 var allPictures = []; // global variable  
 
 //elements to be displayed 
-var imgEl1 = document.getElementById('bag');
-var imgEl2 = document.getElementById('banana');
-var imgEl3 = document.getElementById('bathroom');
+var imgEl1 = document.getElementById('image-1');
+var imgEl2 = document.getElementById('image-2');
+var imgEl3 = document.getElementById('image-3');
 
 var pic1Index = 0;
 var pic2Index = 0;
-var pic3Index = 0;
+var pict3Index = 0;
 
 
 // global object with general this properties
-function Picture(name, src){
+function Picture(src,name){
 this.picName = name;
 this.url = src;
 this.clicked = 0;
@@ -40,6 +40,32 @@ imgEl1.addEventListener('click', function(){
 //     var randomIndex = Math.floor((Math.random() * allPictures.length));
 //     imgEl3.src = allPictures[randomIndex].url;
 // });
+
+
+// //Helper functions
+// //================new pictures ================
+// function chooseNewPicture() {
+//     checkTotalClicks();
+
+//     var previous1 = picIndex1; // 0
+//     var previous2 = picIndex1; // 1
+//     var previous3 = picIndex1; // 2
+
+//     do{
+//         pic2Index = Math.floor(Math.random() * allPictures.length);
+//       } while (previous1 === pic1Index || previous2 === pic1Index || previous3 === pic1Index)
+// }
+
+
+// //==============================
+// function renderResult(){
+//     for(var i in allPictures){
+//         var newLiEl = document.createElement('li');
+//         newLiEl.textContent = allPictures[i].name+ ' clicked : ' + allPictures[i].clicked + 'Times';
+//         resultUl.appendChild(newLiEl);
+//     }
+// }
+// renderResults();
 
 
 new Picture("img/bag.jpg","bag");
