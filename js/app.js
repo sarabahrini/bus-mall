@@ -5,9 +5,9 @@
 var allPictures = []; // global variable  
 
 //elements to be displayed 
-var imgEl1 = document.getElementById('banana');
-var imgEl2 = document.getElementById('sweep');
-var imgEl3 = document.getElementById('bag');
+var imgEl1 = document.getElementById('bag');
+var imgEl2 = document.getElementById('banana');
+var imgEl3 = document.getElementById('bathroom');
 
 var pic1Index = 0;
 var pic2Index = 0;
@@ -29,17 +29,17 @@ imgEl1.addEventListener('click', function(){
     imgEl1.src = allPictures[randomIndex].url;
 });
 
-imgEl2.addEventListener('click', function(){
-    this.clicked++;
-    var randomIndex = Math.floor((Math.random() * allPictures.length));
-    imgEl1.src = allPictures[randomIndex].url;
-});
+// imgEl2.addEventListener('click', function(){
+//     this.clicked++;
+//     var randomIndex = Math.floor((Math.random() * allPictures.length));
+//     imgEl2.src = allPictures[randomIndex].url;
+// });
 
-imgEl3.addEventListener('click', function(){
-    this.clicked++;
-    var randomIndex = Math.floor((Math.random() * allPictures.length));
-    imgEl1.src = allPictures[randomIndex].url;
-});
+// imgEl3.addEventListener('click', function(){
+//     this.clicked++;
+//     var randomIndex = Math.floor((Math.random() * allPictures.length));
+//     imgEl3.src = allPictures[randomIndex].url;
+// });
 
 
 new Picture("img/bag.jpg","bag");
