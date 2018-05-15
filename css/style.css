@@ -5,6 +5,11 @@
   width: 400px;
 } */
 
+
+#title{
+  font-family: 'Monoton', cursive;
+}
+
 img {
     width: 30%;
     border: 1px solid black;
@@ -12,6 +17,7 @@ img {
   
   body {
     background-color: #cccccc;
+    
   }
   
   #duck {
