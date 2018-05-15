@@ -6,7 +6,6 @@
 
 
 **DEVELOPER EXPECTATION**
-* As a developer
 * Display results after the user is done with  his/her selection of 25 items. 
 * Total number of clicks to include only the clicks that happen in the area with the displayed images.
 * Data to be created only when 25 items are selected. 
