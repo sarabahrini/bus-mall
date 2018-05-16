@@ -17,7 +17,7 @@ var resultList = document.getElementById('voteResult');
 
 var pic1Index = 0;
 var pic2Index = 0;
-var pict3Index = 0;
+var pic3Index = 0;
 
 var checkTotalClicks = 0;
 
