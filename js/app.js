@@ -3,7 +3,6 @@
 
 
 var allPictures = []; // global variable  
-var cantBeThis = []; // global variable 
 var object1 = [];
 var object2 = [];
 var object3 = [];
@@ -38,9 +37,9 @@ sectionEl.addEventListener('click', sectionCallback);
 
 function sectionCallback(event) {
     totalClicks();
-console.log(allPictures[event.target.id]);
+// console.log(allPictures[event.target.id]);
     if (event.target.id) {
-        console.log(allPictures);
+        // console.log(allPictures);
         checkTotalClicks++;
         allPictures[event.target.id].clicked++;
         // allPictures[event.target.id].clicked++;
@@ -61,6 +60,7 @@ function renderResults() {
 }
 
 function totalClicks() {
+    console.log(checkTotalClicks)
     if (checkTotalClicks === 25) {
 
         renderResults();
@@ -98,6 +98,9 @@ new Picture("img/wine-glass.jpg", "wine-glass");
 
 
 function chooseNewImg() {  // pick a random picture from allPictures array // avoid duplication
+console.log(cantBeThis)
+var cantBeThis = [pic1Index,pic2Index,pic3Index];
+console.log(cantBeThis)
 
     do{
         pic1Index = Math.floor(Math.random() * allPictures.length);
