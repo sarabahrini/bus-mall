@@ -1,11 +1,10 @@
 'use strict';
 
-
-
 var allPictures = []; // global variable  
 var object1 = [];
 var object2 = [];
 var object3 = [];
+
 
 //linking js to html
 var imgEl1 = document.getElementById('0');
@@ -21,6 +20,10 @@ var pic3Index = 2;
 
 var checkTotalClicks = 0;
 
+// Arrays to hold data for the chart
+var votes = [];
+var titles = [];
+
 // global object with general this properties
 function Picture(src, name) {
     this.name = name;
@@ -28,6 +31,15 @@ function Picture(src, name) {
     this.clicked = 0;
     allPictures.push(this);
 }
+
+// function tallyVote(thisPicture) {
+//     for (var i = 0; i < allPictures.length; i++) {
+//       if (thisPicture === allPictures[i]) {
+//         allPictures[i].votes++;
+//         updateChartArrays();
+//       }
+//     }
+//   }
 
 
 //Event Listeners
@@ -60,15 +72,36 @@ function renderResults() {
 }
 
 function totalClicks() {
-    console.log(checkTotalClicks)
+    // console.log(checkTotalClicks)
     if (checkTotalClicks === 25) {
-
+        drawChart();
         renderResults();
-
         sectionEl.removeEventListener('click', sectionCallback);
     }
 }
 
+function updateChartArrays() {
+    for (var i = 0; i < allPictures.length; i++) {
+        console.log(allPictures);
+      titles[i] = allPictures[i].name;
+      votes[i] = allPictures[i].clicked;
+    }
+  }
+
+  function vote(thisPicture){
+    for(var i = 0; i < allPictures.length; i++){
+      if(thisPicture === allPictures[i].clicked){
+          allPictures[i].votes++; 
+          updateChartArrays();
+      }
+    }
+}
+
+ document.getElementById('clickerBox').addEventListener('click',function(event){
+     if(event.target.id !== 'clickerBox') {
+        vote(event.target.id);
+     }
+ });
 
 new Picture("img/bag.jpg", "bag");
 new Picture("img/banana.jpg", "banana");
@@ -131,7 +164,60 @@ console.log(cantBeThis)
     imgEl3.src = allPictures[pic3Index].url;
     imgEl3.id = pic3Index;
 }
+ // Chart Stuff
 
+ function drawChart() {
+ updateChartArrays();
+ var data = {
+    labels: titles, // titles array we declared earlier
+    datasets: [{
+        label:'Bus-Mall Results',
+        data: votes, // votes array we declared earlier
+        backgroundColor: [
+          'bisque',
+          'darkgray',
+          'burlywood',
+          'lightblue',
+          'navy'
+        ],
+        hoverBackgroundColor: [
+          'darkgreen',
+          'darkgreen',
+          'darkgreen',
+          'darkgreen',
+          'darkgreen'
+        ]
+      }]
+  };
+  
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx,{
+      type: 'bar',
+      data: data,
+      options: {
+        legend: {
+          labels: {
+            fontColor: 'darkgreen',
+            fontSize: 18
+          }
+        },
+        responsive: false,
+        animation: {
+          duration: 1000,
+          easing: 'easeOutBounce'
+        }
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            max: 10,
+            min: 0,
+            stepSize: 1.0
+          }
+        }]
+      }
+    });
+  }
 
 // chooseNewImg();
 
