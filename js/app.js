@@ -30,16 +30,37 @@ function Picture(src, name) {
     this.url = src;
     this.clicked = 0;
     allPictures.push(this);
-}
+};
 
-// function tallyVote(thisPicture) {
-//     for (var i = 0; i < allPictures.length; i++) {
-//       if (thisPicture === allPictures[i]) {
-//         allPictures[i].votes++;
-//         updateChartArrays();
-//       }
-//     }
-//   }
+if(localStorage.allPictures){
+    allPictures=JSON.parse(localStorage.getItem('allPictures'));
+} else {
+
+  console.log("local storage test");
+
+
+new Picture("img/bag.jpg", "bag");
+new Picture("img/banana.jpg", "banana");
+new Picture("img/bathroom.jpg", "bathroom");
+new Picture("img/boots.jpg", "boots");
+new Picture("img/breakfast.jpg", "breakfast");
+new Picture("img/bubblegum.jpg", "bubblegum");
+new Picture("img/chair.jpg", "chair");
+new Picture("img/cthulhu.jpg", "cthulhu");
+new Picture("img/dog-duck.jpg", "bag");
+new Picture("img/dragon.jpg", "dragon");
+new Picture("img/pen.jpg", "pen");
+new Picture("img/pet-sweep.jpg", "pet-sweep");
+new Picture("img/scissors.jpg", "scissors");
+new Picture("img/sweep.png", "sweep");
+new Picture("img/shark.jpg", "shark");
+new Picture("img/tauntaun.jpg", "tauntaun");
+new Picture("img/unicorn.jpg", "unicorn");
+new Picture("img/usb.gif", "usb");
+new Picture("img/water-can.jpg", "water-can");
+new Picture("img/wine-glass.jpg", "wine-glass");
+
+}
 
 
 //Event Listeners
@@ -75,6 +96,7 @@ function totalClicks() {
     // console.log(checkTotalClicks)
     if (checkTotalClicks === 25) {
         drawChart();
+        localStorage.setItem('allPictures', JSON.stringify(allPictures));
         renderResults();
         sectionEl.removeEventListener('click', sectionCallback);
     }
@@ -102,28 +124,6 @@ function updateChartArrays() {
         vote(event.target.id);
      }
  });
-
-new Picture("img/bag.jpg", "bag");
-new Picture("img/banana.jpg", "banana");
-new Picture("img/bathroom.jpg", "bathroom");
-new Picture("img/boots.jpg", "boots");
-new Picture("img/breakfast.jpg", "breakfast");
-new Picture("img/bubblegum.jpg", "bubblegum");
-new Picture("img/chair.jpg", "chair");
-new Picture("img/cthulhu.jpg", "cthulhu");
-new Picture("img/dog-duck.jpg", "bag");
-new Picture("img/dragon.jpg", "dragon");
-new Picture("img/pen.jpg", "pen");
-new Picture("img/pet-sweep.jpg", "pet-sweep");
-new Picture("img/scissors.jpg", "scissors");
-new Picture("img/sweep.png", "sweep");
-new Picture("img/shark.jpg", "shark");
-new Picture("img/tauntaun.jpg", "tauntaun");
-new Picture("img/unicorn.jpg", "unicorn");
-new Picture("img/usb.gif", "usb");
-new Picture("img/water-can.jpg", "water-can");
-new Picture("img/wine-glass.jpg", "wine-glass");
-
 
 
 // function chooseNewImg() {  // pick a random picture from allPictures array // avoid duplication
